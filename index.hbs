@@ -1,0 +1,22 @@
+{{!< default}}
+
+{{! The comment above "< default" means - insert everything in this file into
+    the {body} of the default.hbs template, which contains our header/footer. }}
+ <main class="content" role="main">
+  <div class="row row-offcanvas row-offcanvas-left">
+    <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
+      {{> sidebar }}
+    </div>
+    {{#if @blog.cover}}
+    <div class="col-xs-12 col-sm-10 athena-hero">
+      <picture>
+        <img srcset="{{@blog.cover}}" alt="{{@blog.description}}">
+      </picture>
+    </div>
+    {{/if}}
+    <div class="col-xs-12 col-sm-10 posts">
+      {{> loop }}
+    </div>
+  </div>
+</main>
+

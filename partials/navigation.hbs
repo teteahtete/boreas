@@ -1,0 +1,28 @@
+{{#if @blog.navigation}}
+<header>
+    <nav class="navbar navbar-athena">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#athenaNavBar">
+                <style>
+                    div.navbar-header > button.navbar-toggle:before{
+                        content: '{{@blog.title}}';
+                        margin-right: 5px;
+                    }
+                </style>
+                <span class="fa fa-home"></span>
+            </button>
+            <a alt="{{@blog.title}}" class="navbar-brand" id="blog-logo" href="{{@blog.url}}"><span class="fa fa-home"></span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="athenaNavBar">
+            <ul class="nav navbar-nav">
+            {{#foreach navigation}}
+                <li class="nav-{{slug}}{{#if current}} active{{/if}}" role="presentation"><a href="{{url absolute="true"}}">{{label}}</a></li>
+            {{/foreach}}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a class="subscribe-button icon-feed" href="{{@blog.url}}/rss/"><span class="fa fa-rss"></span> Subscribe</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+{{/if}} 

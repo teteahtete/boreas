@@ -1,0 +1,14 @@
+{
+  "name": "Athena",
+  "version": "1.0.0",
+  "author": "Tete Ah Tete",
+  "description": "A starter Ghost theme with Twitter Bootstrap support, and Kendo core ui",
+  "repository": {
+    "url": "https://github.com/teteahtete/athena",
+    "type": "git"
+  },
+  "keywords": [
+    "ghost","theme","bootstrap","kendo"
+  ],
+  "license": "MIT"
+}
