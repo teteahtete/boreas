@@ -1,12 +1,12 @@
 {{! Each post will be output using this markup }}
   <div class="row">
     {{#foreach posts}}
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-md-12 col-lg-6">
           <article class="{{post_class}}">
             <header class="post-header">
-              <h2 class="post-title">
+              <h3 class="post-title">
                 <a href="{{url}}">{{{title}}}</a>
-              </h2>
+              </h3>
               <span class="post-meta text-muted">
                 <time datatime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMM YYYY"}}</time>
                 {{#if tags}} <span>on</span>
