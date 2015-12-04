@@ -19,6 +19,7 @@ $sky-blue:#428bca;
 	 9. Sidebar
 	10. Site Menu
     11. Tooltips
+    12. Code Blocks
 */
 
 /* 01. Fonts */
@@ -565,4 +566,24 @@ section.author .well > div {
 
 .tooltip.top > .tooltip-arrow, .tooltip.left > .tooltip-arrow, .tooltip.right > .tooltip-arrow, .tooltip.bottom > .tooltip-arrow {
 	border-top: 5px solid $ocean-blue-hex;
+}
+
+/* 12. Code Blocks */
+pre[class*=language-] {
+    background: #FFE4C4 !important;
+}
+
+pre[class*=language-]>code[data-language] {
+    overflow: visible;
+    max-height: 28em;
+    display: inline-block;
+}
+.language-css .token.string, .style .token.string, .token.entity, .token.operator, .token.url, .token.variable{
+    color: #31708f;
+    background-color: transparent;
+}
+
+pre[class*=language-]>code[data-language]::before {
+    color:$washed-blue; // #000
+    background-color:$washed-blue-text;// #CFCFCF;
 }
