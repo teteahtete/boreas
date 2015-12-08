@@ -17,6 +17,20 @@ grunt.initConfig({
             options: {
                 event: 'all'
             }
+        },
+        uglify: {
+            files: ['assets/js/*.js','!assets/js/*.min.js'],
+            tasks: ['uglify'],
+            options: {
+                event: 'all'
+            }
+        },
+        cssmin:{
+            files: ['!assets/css/*.min.css', 'assets/css/.css'],
+            tasks: ['cssmin'],
+            options: {
+                event: 'all'
+            }
         }
     },
 	sass: {
@@ -27,6 +41,16 @@ grunt.initConfig({
         dist: {
             files: {
                 'assets/css/athena.css': 'assets/css/athena.scss'
+            }
+        }
+    },
+    cssmin: {
+        sitecss:{
+            options: {
+                banner: '/* My minified css file */'  
+            },
+            files: {
+                'assets/css/athena.min.css' : ['assets/css/athena.css']
             }
         }
     },
@@ -41,10 +65,25 @@ grunt.initConfig({
             declaration: false
         }
         }
+    },
+    uglify: {
+        options: {
+            compress: true,
+            sourceMap: true
+        },
+        applib: {
+            src: ['assets/js/*.js', '!assets/js/*.min.js'],
+            dest: 'assets/js/athena.min.js'
+        }
     }
     });
 
 grunt.loadNpmTasks('grunt-contrib-watch');    
 grunt.loadNpmTasks('grunt-contrib-sass');
+grunt.loadNpmTasks('grunt-contrib-uglify');
+grunt.loadNpmTasks('grunt-contrib-cssmin');
 grunt.loadNpmTasks('grunt-typescript');
-grunt.registerTask('default', ['watch','sass', 'typescript']);
+grunt.registerTask('default', ['watch']);
+grunt.registerTask('transpile', ['sass','typescript']);
+grunt.registerTask('bundle', ['uglify','cssmin']);
+
