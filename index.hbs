@@ -7,13 +7,14 @@
     <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
       {{> sidebar }}
     </div>
-    {{#if @blog.cover}}
     <div class="col-xs-12 col-sm-10 athena-hero">
+    {{#if @blog.cover}}
       <picture>
         <img srcset="{{@blog.cover}}" alt="{{@blog.description}}">
       </picture>
-    </div>
     {{/if}}
+      <h2>{{@blog.title}}</h2>
+    </div>
     <div class="col-xs-12 col-sm-10 posts">
       {{> loop }}
     </div>

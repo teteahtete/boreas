@@ -1,6 +1,8 @@
-# bootstrap
+# Athena!
 
 A Ghost Theme that incorporates Bootstrap v3.0.0, Font Awesome v4.1.0, jQuery v1.9.1, Kendo UI Core v2014.1.416.
+
+Nothing but blue skies ...
 
 # misc
 

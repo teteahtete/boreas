@@ -6,15 +6,16 @@
     <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
       {{> sidebar }}
     </div>
-  
-  {{#if post.image}}
-      <div class="col-xs-12 athena-hero">
-        <picture>
-          <img srcset="{{post.image}}" alt="{{post.excerpt}}">
-        </picture>
-      </div>
-  {{/if}}
-    
+
+    {{#if post.image}}  
+    <div class="col-xs-12 col-sm-10 athena-hero">
+      <picture>
+        <img srcset="{{post.image}}" alt="{{post.excerpt}}">
+        <h2>{{#if post.featured}}<span class="fa fa-star-o" title="The author {{author.name}} flagged this article as a featured post!" data-toggle="tooltip" data-placement="auto"></span> {{/if}}{{post.title}}</h2>
+      </picture>
+    </div>
+    {{/if}}
+        
   <div class="col-xs-12 col-sm-10 posts">
       <article class="{{post_class}} no-bottom-border">
       {{! Everything inside the #post tags pulls data from the post }}
@@ -25,7 +26,9 @@
       <div class="row">
         <div class="col-xs-12">
           <header class="post-header">
+          {{#unless image}}
             <h1 class="post-title page-header">{{#if featured}}<span class="fa fa-star-o" title="The author {{author.name}} flagged this article as a featured post!" data-toggle="tooltip" data-placement="auto"></span> {{/if}}{{{title}}}</h1>
+          {{/unless}}
             <div class="post-meta text-muted">
               <time datetime="{{date format="YYYY-MM-DD"}}">{{date format='DD MMM YYYY'}}</time>
               {{#if tags}} <span>on</span {{tags separator=" &amp; "}}{{/if}}

@@ -4,6 +4,7 @@ $washed-blue-text:#31708f;
 $ocean-blue-rgba: rgba(46,109,164,1.0);
 $ocean-blue-hex: #2e6da4;
 $sky-blue:#428bca;
+$salmon: #FFE4C4;
 /* ==========================================================================
    Table of Contents
    ========================================================================== */
@@ -40,7 +41,7 @@ html {
 
 body {
 	font-family: Calibri, Tahoma, sans-serif;
-	background: linear-gradient(to bottom, $ocean-blue-rgba, rgba(255,255,255,0.45), $ocean-blue-rgba, $ocean-blue-rgba);
+	background: linear-gradient(to left, $ocean-blue-rgba, rgba(255,255,255,0.35), $ocean-blue-rgba, $ocean-blue-rgba);
 }
 
 ::-moz-selection {
@@ -169,7 +170,7 @@ pre {
     font-size: 0.9em;
     white-space: pre;
     overflow: auto;
-    background: #FFE4C4;
+    background: $salmon;
     code, tt {
         font-size: inherit;
         white-space: pre-wrap;
@@ -221,9 +222,22 @@ div.athena-hero
 {
 	padding-right:0px;
 	padding-left:0px;
+    position:relative;
     > picture > img {
         max-width: 100%;
         height:auto;
+    }
+    
+    h2 {
+        position: absolute;
+        color: $washed-blue;
+        bottom: -2px;
+        padding-bottom: 2px;
+        width: 100%;
+        margin-bottom: 0px;
+        text-align: right;
+        padding-right: 0.2em;
+        background: linear-gradient(to bottom, $ocean-blue-rgba, rgba(255,255,255,0.45));
     }
 }
 
@@ -330,6 +344,28 @@ h1.post-title.page-header{
         color: #fff;
         background-color: $chalk;
         text-decoration: none;
+    }
+    
+    a.active:before {
+        content: '\e044';
+        position: relative;
+        top: 1px;
+        display: inline-block;
+        font-family: 'Glyphicons Halflings';
+        -webkit-font-smoothing: antialiased;
+        margin-right:3px;
+    }
+    
+    a.active:active {
+        background-color: #FFE4C4;
+        color: #999;
+        font-weight: bold;  
+    }
+    
+    a.active:hover {
+        background-color: #FFE4C4;
+        color: #999;
+        font-weight: bold;  
     }
     
     @media (min-width:767px) {
@@ -465,12 +501,16 @@ section.author .well > div {
 }
 
 /* 09. Sidebar */
-#sidebar {
+#sidebar{
     padding-top: 20px;
     color: $ocean-blue-hex;
 	min-height: 440px;
-    .nav {
+    .nav{
         width: 95%;
+    }
+    blockquote{
+        padding-bottom: 0.4em;
+        border-left: 0.2em solid #bce8f1;
     }
 }
 
@@ -563,6 +603,10 @@ section.author .well > div {
     }
     
     @media screen and (min-width: 767px) {
+        .navbar-collapse.collapse{
+            margin-left:-15px;
+        }
+        
         .navbar-brand, .navbar-nav li a, .navbar-brand a {
             line-height: 50px;
             height: 50px;
@@ -593,7 +637,7 @@ section.author .well > div {
 
 /* 12. Code Blocks */
 pre[class*=language-] {
-    background: #FFE4C4 !important;
+    background: $salmon !important;
 }
 
 pre[class*=language-]>code[data-language] {
