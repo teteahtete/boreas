@@ -50,6 +50,10 @@ h1, h2, h3, h4, h5, h6, footer, header {
   margin-top: 0px;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  text-transform: lowercase;
+}
+
 p, ul, ol, dl {
   -webkit-font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;
   -moz-font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;
@@ -260,6 +264,23 @@ h1.post-title.page-header {
   border-bottom: 0px;
 }
 
+.blog-tags-wrapper {
+  border-left: 0;
+  border-top: 0.2em solid #bce8f1;
+  border-top-color: #bce8f1;
+  border-right: 0.2em solid #bce8f1;
+  border-bottom: 0.2em solid #bce8f1;
+}
+
+#blog-tags {
+  border: 0;
+  padding: 0.2em;
+}
+#blog-tags a {
+  display: block;
+  font-size: 1.0em;
+}
+
 .post-meta {
   text-transform: uppercase;
   font-size: 0.75em;
@@ -362,6 +383,9 @@ section.author .well, section.share .well {
   border-radius: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(46, 109, 164, 0.1);
   box-shadow: inset 0 1px 1px rgba(46, 109, 164, 0.1);
+}
+section.author .well h4, section.share .well h4 {
+  text-transform: none;
 }
 
 section.share {

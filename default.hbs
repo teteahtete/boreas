@@ -20,7 +20,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/kendo-ui-core/2014.1.416/styles/kendo.default.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/2.1.2/normalize.min.css"/>   
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/assets/css/athena.css" />
+    <link rel="stylesheet" type="text/css" href="{{asset 'css/athena.css'}}" />
     {{! insert font link here
     	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Open+Sans:700,400" />
   	}}
@@ -28,7 +28,7 @@
   	{{! Ghost outputs important style and meta data with this tag }}
   	{{ghost_head}}
 </head>
-<body class="{{body_class}}">
+<body class="{{body_class}}" data-blog-rss="{{@blog.url}}/rss/">
     <div class="container">
        <div class="row">
          <div class="col-xs-12 teaser"></div>
@@ -36,15 +36,15 @@
         <div class="row">{{navigation}}</div>
         {{{body}}}
         <div class="row">{{> footer}}</div>
-       
     </div>
 
   {{ghost_foot}}
   
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script> 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/kendo-ui-core/2014.1.416/js/kendo.ui.core.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script>
-  <script type="text/javascript" src="/assets/js/athena.js"></script>
+  <script type="text/javascript" src="{{asset 'js/athena.min.js'}}"></script>
 </body>
 </html>
