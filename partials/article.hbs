@@ -1,0 +1,71 @@
+<article class="{{post_class}} no-bottom-border">
+{{! Everything inside the #post tags pulls data from the post }}
+	
+	{{#post}}
+
+	{{! Everything below outputs content of the the post which has been published }}
+	<div class="col-xs-12">
+		<header class="post-header">
+		{{#unless image}}
+		<h1 class="post-title page-header">{{#if featured}}<span class="fa fa-star-o" title="The author {{author.name}} flagged this article as a featured post!" data-toggle="tooltip" data-placement="auto"></span> {{/if}}{{{title}}}</h1>
+		{{/unless}}
+		<div class="post-meta text-muted">
+			<time datetime="{{date format="YYYY-MM-DD"}}">{{date format='DD MMM YYYY'}}</time>
+			{{#if tags}} <span>on</span {{tags separator=" &amp; "}}{{/if}}
+		</div>
+		</header>
+	</div>
+	
+	<div class="col-xs-12">
+		<section class="post-content">
+		{{content}}
+		</section>
+	</div>
+		
+	<footer class="post-footer">
+		{{! Everything inside the #author tags pulls data from the author }}
+		<div class="col-xs-12 col-sm-6">
+			<section class="author">
+			<div class="well">
+				{{#author}}      
+				{{#if image}}
+				<div>
+					<figure class="author-image">
+						<a class="img" href="{{url}}" style="background-image: url({{image}})"><span class="hidden">{{name}}'s Picture</span></a>
+					</figure>
+				</div>
+				{{/if}}
+				<div>
+					<h4><a href="{{url}}">{{name}}</a></h4>
+					{{#if bio}}
+						<p class="text-muted">{{bio}}</p>
+					{{else}}
+						<p>Read <a href="{{url}}">more posts</a> by this author.</p>
+					{{/if}}
+					<div class="author-meta">
+						{{#if location}}<span class="author-location icon-location">{{location}}</span>{{/if}}
+						{{#if website}}<span class="author-link icon-link"><a href="{{website}}">{{website}}</a></span>{{/if}}
+					</div>
+				</div>
+			{{/author}}
+			</div>
+			</section>
+		</div>
+		
+		<div class="col-xs-12 col-sm-6">
+		<section class="share">
+			<div class="well">
+			<h4>Share this post</h4>
+			<div class="btn-group btn-group-justified">
+				<a href="#" class="btn btn-primary fa fa-twitter"></a>
+				<a href="#" class="btn btn-primary fa fa-facebook"></a>
+				<a href="#" class="btn btn-primary fa fa-google-plus"></a>
+			</div>
+			</div>
+		</section>
+		</div>
+	</footer>
+
+	{{/post}}
+
+</article>

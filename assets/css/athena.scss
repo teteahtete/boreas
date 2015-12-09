@@ -5,6 +5,12 @@ $ocean-blue-rgba: rgba(46,109,164,1.0);
 $ocean-blue-hex: #2e6da4;
 $sky-blue:#428bca;
 $salmon: #FFE4C4;
+
+@mixin hidden() {
+    display: none;
+    visibility: hidden;
+}
+
 /* ==========================================================================
    Table of Contents
    ========================================================================== */
@@ -41,7 +47,10 @@ html {
 
 body {
 	font-family: Calibri, Tahoma, sans-serif;
-	background: linear-gradient(to left, $ocean-blue-rgba, rgba(255,255,255,0.35), $ocean-blue-rgba, $ocean-blue-rgba);
+    background-color: $ocean-blue-hex;
+    @media screen and (min-width:767px){
+	   background: linear-gradient(to bottom, $ocean-blue-rgba, rgba(255,255,255,0.35), $ocean-blue-rgba, $ocean-blue-rgba);
+    }
 }
 
 ::-moz-selection {
@@ -206,7 +215,7 @@ main.content > div {
 }
 
 #blog-logo img {
-	width:100%;
+	max-width:100%;
 	height:auto;
 }
 
@@ -224,7 +233,7 @@ div.athena-hero
 	padding-left:0px;
     position:relative;
     > picture > img {
-        max-width: 100%;
+        width: 100%;
         height:auto;
     }
     
@@ -235,9 +244,30 @@ div.athena-hero
         padding-bottom: 2px;
         width: 100%;
         margin-bottom: 0px;
-        text-align: right;
+        text-align: center;
         padding-right: 0.2em;
-        background: linear-gradient(to bottom, $ocean-blue-rgba, rgba(255,255,255,0.45));
+        background: linear-gradient(to right, rgba(255, 255, 255, 0), $ocean-blue-rgba, rgba(255, 255, 255, 0));
+        
+        @media screen and (min-width: 767px){
+            font-size: 2.6em;
+        }
+    }
+    
+    > div {
+        position: absolute;
+        color: #fff;
+        top: 0px;
+        width: 100%;
+        text-align: right;
+        padding-right: 1em;
+        font-style: italic;
+        opacity: 0.75;
+        @include hidden();
+        @media screen and (min-width: 767px){
+            font-size: 1.3em;
+            display: block;
+            visibility: visible;
+        }
     }
 }
 
@@ -279,7 +309,7 @@ h1.post-title.page-header{
     }
     
     p::first-line {
-	   color: $chalk;
+	   color: $sky-blue;
     }    
 }
 
@@ -301,11 +331,9 @@ h1.post-title.page-header{
 }
 
 .blog-tags-wrapper{
-    border-left: 0;
-    border-top: 0.2em solid #bce8f1;
-    border-top-color: #bce8f1;
-    border-right: 0.2em solid #bce8f1;
-    border-bottom: 0.2em solid #bce8f1;
+    @media screen and (max-width:767px){
+        @include hidden();
+    }
 }
 
 #blog-tags {
@@ -398,9 +426,6 @@ header.post-header {
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
-    @media screen and (max-width:767px){
-        background-color: $ocean-blue-hex;
-    }
 }
 
 .site-footer section.copyright > a {
@@ -414,7 +439,7 @@ header.post-header {
 }
 
 /* 08. Social */
-.author-image {
+.author-image{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -439,6 +464,31 @@ header.post-header {
     }
 }
 
+.blog-image {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    @media screen and (max-width:767px){
+        @include hidden();
+    }
+    overflow: hidden;
+    padding: 6px;
+    background: #fff;
+    z-index: 2;
+    margin-top: 2px;
+    .img {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center center;
+    }
+}
+
 section.author .well, section.share .well {
 	text-align:center;
     background-color: $washed-blue;
@@ -455,8 +505,7 @@ section.share {
 	min-height: 50px;
     
     .well h4 {
-        visibility: collapse;
-        display: none;
+        @include hidden();
     }
     
     .btn-group {
@@ -501,57 +550,7 @@ section.author .well > div {
 }
 
 /* 09. Sidebar */
-#sidebar{
-    padding-top: 20px;
-    color: $ocean-blue-hex;
-	min-height: 440px;
-    .nav{
-        width: 95%;
-    }
-    blockquote{
-        padding-bottom: 0.4em;
-        border-left: 0.2em solid #bce8f1;
-    }
-}
-
-/* collapsed sidebar styles */
-@media screen and (max-width: 767px) {
-  .row-offcanvas {
-    position: relative;
-    -webkit-transition: all 0.25s ease-out;
-    -moz-transition: all 0.25s ease-out;
-    transition: all 0.25s ease-out;
-	background-color:#fff;
-  }
-  
-  .row-offcanvas-right
-  .sidebar-offcanvas {
-    right: -41.6%;
-  }
-
-  .row-offcanvas-left
-  .sidebar-offcanvas {
-    left: -41.6%;
-  }
-  
-  .row-offcanvas-right.active {
-    right: 41.6%;
-  }
-  
-  .row-offcanvas-left.active {
-    left: 41.6%;
-  }
-  
-  .sidebar-offcanvas {
-    position: absolute;
-    top: 0;
-    width: 41.6%;
-  }
-  
-  #sidebar {
-    padding-top:0;
-  }
-}
+// none required
 
 /* 10. Site Menu */
 .navbar {
@@ -562,14 +561,18 @@ section.author .well > div {
     margin-bottom: 0px;
     border: 0px;
     background: transparent;
+    .fa-caret-down:before {
+        content: "\f0d7";
+        margin-left: 6px;
+    }
     .navbar-text {
         color: #fff;
     }
-    .navbar-nav > li > a {
+    .navbar-nav li a {
         color: #fff;
     }
-    .navbar-nav > li > a:hover,
-    .navbar-nav > li > a:focus{
+    .navbar-nav li a:hover,
+    .navbar-nav li a:focus {
 		background-color: $washed-blue;
 		color: $washed-blue-text;
 	}
@@ -602,12 +605,17 @@ section.author .well > div {
         color:$washed-blue-text;
     }
     
+    .dropdown-menu{
+        background-color: $ocean-blue-hex;
+        font-size: 12px;
+    }
+    
     @media screen and (min-width: 767px) {
         .navbar-collapse.collapse{
             margin-left:-15px;
         }
         
-        .navbar-brand, .navbar-nav li a, .navbar-brand a {
+        .navbar-brand, .navbar-nav li > a, .navbar-brand > a {
             line-height: 50px;
             height: 50px;
             padding-top: 0px;

@@ -3,20 +3,40 @@
 {{! The comment above "< default" means - insert everything in this file into
     the {body} of the default.hbs template, which contains our header/footer. }}
  <main class="content" role="main">
-  <div class="row row-offcanvas row-offcanvas-left">
-    <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
-      {{> sidebar }}
-    </div>
-    <div class="col-xs-12 col-sm-10 athena-hero">
+   
+  <div class="row">
+    <div class="col-xs-12 athena-hero">
     {{#if @blog.cover}}
       <picture>
         <img srcset="{{@blog.cover}}" alt="{{@blog.description}}">
       </picture>
     {{/if}}
       <h2>{{@blog.title}}</h2>
+      <div>{{@blog.description}}</div>
     </div>
-    <div class="col-xs-12 col-sm-10 posts">
-      {{> loop }}
+    
+    <div class="col-xs-12 posts">
+      <div class="row">
+        
+        <div class="col-xs-12 col-sm-12 col-md-10">
+          <div class="row">
+            {{> loop }}
+            <div class="col-xs-12 col-sm-4 col-sm-offset-4 col-md-3 col-md-offset-5">
+            {{!! After all the posts, we have the previous/next pagination links }}
+            {{pagination}}          
+            </div>
+           </div>
+        </div>
+        
+        <div class="col-xs-12 col-sm-12 col-md-2">
+          <div class="row">
+            <div class="col-sm-12">
+              {{> sidebar }}
+            </div>   
+           </div>
+        </div>
+        
+      </div>
     </div>
   </div>
 </main>

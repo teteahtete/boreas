@@ -1,10 +1,13 @@
 <!-- sidebar -->
 {{#if @blog.logo}}
-<a id="blog-logo" href="{{@blog.url}}">
-	<img src="{{@blog.logo}}" alt="{{@blog.title}}" />
-</a>
+<div>
+	<figure class="blog-image">
+		<a class="img" id="blog-logo" href="{{@blog.url}}" style="background-image: url({{@blog.logo}})" title="{{@blog.description}}" data-toggle="tooltip" data-placement="auto">
+			<span class="hidden">{{@blog.title}}</span>
+		</a>
+	</figure>
+</div>	
 {{/if}}
-<blockquote class="text-muted">{{@blog.description}}</blockquote>
 <div class="blog-tags-wrapper">
 	<div id="blog-tags" class="post-meta"></div>
 </div>

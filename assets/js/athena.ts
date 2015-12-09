@@ -14,6 +14,10 @@ module Athena{
             return $('#blog-tags').get(0);
         }
         
+        private static getNavList() : HTMLUListElement {
+            return <HTMLUListElement>$('#athenaNavBar > ul').get(0);
+        }
+        
         constructor (){
         }       
         
@@ -26,26 +30,51 @@ module Athena{
         
         tags(): Bootstrapper{
             var blogUrl:string = Bootstrapper.getBlogUrl();
-            var target:HTMLElement = Bootstrapper.getTagWrapper();
-            var template:string = '<div><a href="#:url#">#:category# [#:articleCount#]</a></div>';
             
-            if(blogUrl === undefined || target === undefined){
+            if(blogUrl === undefined){
                 return this;
             }
                           
             this.getChannel(blogUrl).then((d)=>{
                  var items = d.getCategories(Athena.Utils.slugify);
-                 $(target).kendoListView({
+                 this.addTagsToSidebar(items);
+                 this.addTagsToNavbar(items);
+            }); 
+               
+            return this;
+        }
+        
+        private addTagsToNavbar(items:Array<Athena.Data.Model.IRssChannelCategoryMeta>): void {
+            var target:HTMLUListElement = Bootstrapper.getNavList();
+            var template = kendo.template('<a class="dropdown-toggle" data-toggle="dropdown" href="##">Tags<span class="fa fa-caret-down"></span></a>' +
+                '<ul class="dropdown-menu">' +
+                '# for (var i = 0; i < data.length; i++) { #' +
+                    '<li><a href="#:data[i].url#">#:data[i].category# [#:data[i].articleCount#]</a></li>'+
+                '# } #' +
+                '</ul>');
+                                        
+            if(target !== undefined){
+                var result:string = template(items);
+                var menuItem:HTMLLIElement = document.createElement("li");
+                menuItem.innerHTML = result;
+                $(menuItem).addClass('dropdown');
+                target.appendChild(menuItem);
+            }
+        }
+        
+        private addTagsToSidebar(items:Array<Athena.Data.Model.IRssChannelCategoryMeta>): void {
+            var target:HTMLElement = Bootstrapper.getTagWrapper();
+            var template:string = '<div><a href="#:url#">#:category# [#:articleCount#]</a></div>';
+            
+            if(target !== undefined){           
+                $(target).kendoListView({
                     template: kendo.template(template),
                     dataSource: new kendo.data.DataSource(
                     {
                         data : items
                     })
-                })
-                ;
-            }); 
-               
-            return this;
+                });
+            }
         }
         
         private getChannel(blogUrl:string ): JQueryPromise<Athena.Data.Model.RssChannel>{

@@ -13,6 +13,9 @@ var Athena;
         Bootstrapper.getTagWrapper = function () {
             return $('#blog-tags').get(0);
         };
+        Bootstrapper.getNavList = function () {
+            return $('#athenaNavBar > ul').get(0);
+        };
         Bootstrapper.prototype.sideBar = function () {
             $('[data-toggle=offcanvas]').click(function () {
                 $('.row-offcanvas').toggleClass('active');
@@ -20,22 +23,45 @@ var Athena;
             return this;
         };
         Bootstrapper.prototype.tags = function () {
+            var _this = this;
             var blogUrl = Bootstrapper.getBlogUrl();
-            var target = Bootstrapper.getTagWrapper();
-            var template = '<div><a href="#:url#">#:category# [#:articleCount#]</a></div>';
-            if (blogUrl === undefined || target === undefined) {
+            if (blogUrl === undefined) {
                 return this;
             }
             this.getChannel(blogUrl).then(function (d) {
                 var items = d.getCategories(Athena.Utils.slugify);
+                _this.addTagsToSidebar(items);
+                _this.addTagsToNavbar(items);
+            });
+            return this;
+        };
+        Bootstrapper.prototype.addTagsToNavbar = function (items) {
+            var target = Bootstrapper.getNavList();
+            var template = kendo.template('<a class="dropdown-toggle" data-toggle="dropdown" href="##">Tags<span class="fa fa-caret-down"></span></a>' +
+                '<ul class="dropdown-menu">' +
+                '# for (var i = 0; i < data.length; i++) { #' +
+                '<li><a href="#:data[i].url#">#:data[i].category# [#:data[i].articleCount#]</a></li>' +
+                '# } #' +
+                '</ul>');
+            if (target !== undefined) {
+                var result = template(items);
+                var menuItem = document.createElement("li");
+                menuItem.innerHTML = result;
+                $(menuItem).addClass('dropdown');
+                target.appendChild(menuItem);
+            }
+        };
+        Bootstrapper.prototype.addTagsToSidebar = function (items) {
+            var target = Bootstrapper.getTagWrapper();
+            var template = '<div><a href="#:url#">#:category# [#:articleCount#]</a></div>';
+            if (target !== undefined) {
                 $(target).kendoListView({
                     template: kendo.template(template),
                     dataSource: new kendo.data.DataSource({
                         data: items
                     })
                 });
-            });
-            return this;
+            }
         };
         Bootstrapper.prototype.getChannel = function (blogUrl) {
             var _this = this;
