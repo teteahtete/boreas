@@ -4,23 +4,9 @@
         <article id="article-{{id}}" class="{{post_class}}">
         {{#if image}}
           <style>
-            @media screen and (min-width:767px){
-              #article-{{id}} {
-                position: relative;
-                z-index: 1;
-              }
-              
-              #article-{{id}}:before {
-                content: "";
-                position: absolute;
-                top: 0; 
-                left: 0;
-                width: 100%; 
-                height: 100%;  
-                opacity: .4; 
-                z-index: -1;
+            @media screen and (min-width:767px){              
+              #article-{{id}} > section:before {
                 background: url({{image}});
-                background-position: center center;
               }         
             }
           </style>
@@ -38,8 +24,10 @@
               {{/if}}
             </span>
           </header>
-          <section class="post-excerpt">
-            <p>{{excerpt words="30"}}&hellip;</p>
+          <section class="post-excerpt" {{#if image}} data-has-image="true" {{/if}}>
+            <p>
+               {{#if image}}{{excerpt words="20"}}{{else}}{{excerpt words="60"}}{{/if}}
+              &hellip;</p>
           </section>
         </article>
       </div>

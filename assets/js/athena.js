@@ -48,7 +48,7 @@ var Athena;
                 var menuItem = document.createElement("li");
                 menuItem.innerHTML = result;
                 $(menuItem).addClass('dropdown');
-                target.appendChild(menuItem);
+                target.insertBefore(menuItem, target.firstElementChild);
             }
         };
         Bootstrapper.prototype.addTagsToSidebar = function (items) {

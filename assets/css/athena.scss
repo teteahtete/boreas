@@ -273,8 +273,11 @@ div.athena-hero
 
 /* 05. Posts */
 .posts article.post {
-    margin-top: 5px;
+    margin-top: 1em;
     position: relative;
+    @media screen and (min-width: 767px) {    
+        min-height: 12em;
+    }
 }
 
 @media screen and (min-width: 767px) {
@@ -293,7 +296,6 @@ h1.post-title.page-header{
 
 .post-excerpt {
     p {
-        margin-top: 1em;
         min-height: 3em;
     }
 
@@ -312,6 +314,68 @@ h1.post-title.page-header{
 	   color: $sky-blue;
     }    
 }
+
+article.post {
+    > header > h3{
+        @media screen and (max-width:767px){
+            border-top: 1px dotted $chalk;
+            padding-top:3px;    
+        }
+    }
+        
+    > section.post-excerpt{
+        position: relative;
+        z-index: 1;
+    }
+    
+    > section.post-excerpt:before {
+        content: "";
+        position: absolute;
+        top: 0; 
+        left: 0;
+        width: 100%; 
+        height: 100%;  
+        opacity: .4; 
+        z-index: -1;
+        background-position: center center;
+        @media screen and (min-width:985px){
+            min-height:12em;
+        }
+        
+        @media screen and (min-width:767px) and (max-width:984px){
+            min-height: 6em;
+        }
+    }
+}
+
+.post-excerpt[data-has-image] {
+    @media screen and (min-width:767px){
+        p {
+            background-color: $washed-blue;
+            color: $washed-blue-text;
+            padding-top: 3px;
+            padding-bottom: 3px;
+            border-bottom: 1px dotted $chalk;
+        }
+    
+        p:first-letter {
+            float: left;
+            color: #fff;
+            font-size: 3em;
+            margin-top:-10px;
+            padding-right:3px;
+            font-family: 'Times New Roman', Times, serif;
+            text-transform: uppercase;
+            text-shadow: 1px 1px $washed-blue-text;
+        }
+        
+        p::first-line {
+            color: $washed-blue-text;
+            font-weight: bold;
+        }  
+    }  
+}
+
 
 .post-template .post {
 	min-height: 480px;
@@ -415,10 +479,17 @@ h1.post-title.page-header{
 }
 
 /* 06. Site Header */
+
 header.post-header {
     padding-bottom: 0.5em;
-	margin-bottom: 0.5em;
-    border-bottom: 1px dotted $chalk;
+    margin-bottom: 0.5em;
+    padding-top: 0.5em;   
+}
+
+@media screen and (min-width:767px){
+    header.post-header::first{
+        
+    }    
 }
 
 /* 7. Site Footer */
@@ -557,10 +628,26 @@ section.author .well > div {
     border-radius: 0;
 }
 
+nav > div.navbar-header > button:nth-child(1){
+    float:left;
+    margin-left:15px;
+    border: 0px;
+}
+
+button.navbar-toggle span.fa.fa-home{
+    color: #fff;
+    font-size: 20px;
+}
+
+button.navbar-toggle span.fa.fa-home:hover{
+    color: $washed-blue-text;
+}
+
 .navbar-athena {
     margin-bottom: 0px;
     border: 0px;
     background: transparent;
+    
     .fa-caret-down:before {
         content: "\f0d7";
         margin-left: 6px;
@@ -654,7 +741,7 @@ pre[class*=language-]>code[data-language] {
     display: inline-block;
 }
 .language-css .token.string, .style .token.string, .token.entity, .token.operator, .token.url, .token.variable{
-    color: #31708f;
+    color: $washed-blue-text;
     background-color: transparent;
 }
 
