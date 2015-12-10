@@ -1,0 +1,43 @@
+{{!< default}}
+
+{{! The comment above "< default" means - insert everything in this file into
+    the {body} of the default.hbs template, which contains our header/footer. }}
+ <main class="content" role="main">
+   
+  <div class="row">
+    <div class="col-xs-12 athena-hero">
+    {{#author}}
+      <picture>
+        <img srcset="{{#if author.cover}}{{author.cover}}{{else}}{{@blog.cover}}{{/if}}" alt="{{@author.bio}}">
+      </picture>
+      <h2>{{name}} @ {{@blog.title}}</h2>
+      <div>{{bio}}</div>
+      {{/author}}
+    </div>
+    
+    <div class="col-xs-12 posts">
+      <div class="row">
+        
+        <div class="col-xs-12 col-sm-12 col-md-10">
+          <div class="row">
+            {{> loop }}
+            <div class="col-xs-12 col-sm-4 col-sm-offset-4 col-md-3 col-md-offset-5">
+            {{!! After all the posts, we have the previous/next pagination links }}
+            {{pagination}}          
+            </div>
+           </div>
+        </div>
+        
+        <div class="col-xs-12 col-sm-12 col-md-2">
+          <div class="row">
+            <div class="col-sm-12">
+              {{> sidebar }}
+            </div>   
+           </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</main>
+
