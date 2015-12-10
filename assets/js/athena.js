@@ -45,10 +45,10 @@ var Athena;
                 '</ul>');
             if (target !== undefined) {
                 var result = template(items);
-                var menuItem = document.createElement("li");
+                //var menuItem:HTMLLIElement = document.createElement("li");
+                var menuItem = target.firstElementChild;
                 menuItem.innerHTML = result;
                 $(menuItem).addClass('dropdown');
-                target.insertBefore(menuItem, target.firstElementChild);
             }
         };
         Bootstrapper.prototype.addTagsToSidebar = function (items) {

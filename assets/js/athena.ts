@@ -55,10 +55,10 @@ module Athena{
                                         
             if(target !== undefined){
                 var result:string = template(items);
-                var menuItem:HTMLLIElement = document.createElement("li");
+                //var menuItem:HTMLLIElement = document.createElement("li");
+                var menuItem:HTMLLIElement = <HTMLLIElement>target.firstElementChild;
                 menuItem.innerHTML = result;
                 $(menuItem).addClass('dropdown');
-                target.insertBefore(menuItem, target.firstElementChild);
             }
         }
         
