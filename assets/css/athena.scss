@@ -523,75 +523,108 @@ h1.post-title.page-header{
     }
 }
 
+.next-post > div.well, .prev-post > div.well{
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    text-overflow: clip;
+    
+    min-height: 100px;
+    max-height: 100px;
+    
+    @media screen and (min-width:984px){
+        min-height: 125px;
+        max-height: 125px;
+    }
+    
+    @media screen and (min-width:767px) and (max-width:984px){
+        min-height: 150px;
+        max-height: 150px;
+    }
+    
+    > div {
+            > span {
+                position: absolute;
+                right: 0px;
+            }
+            h2 {
+                font-size: 18px;
+                max-width: 80%; 
+            }
+            p{
+                margin-bottom:0px;
+            }
+            > div {
+                position: absolute;
+                right: 15px;
+                bottom: 0px;
+                margin: 3px;
+                font-family: Consolas, Courier, monospace;
+                font-size: 0.9em;
+                text-align: right;
+                color: $chalk;
+                min-width: 20%;
+                .fa {
+                    margin-right:6px;
+                }
+            }
+        }
+}
+
 .prev-post > div.well:hover, .next-post > div.well:hover{
     @include excerpt-hover()
 }
 
 .prev-post > div.well
-{
-    display: inline-block;
-    width: 100%;
-    position: relative;
-    
+{    
     > div {
         > span{
-            position: absolute;
             left: 0px;
             padding-left: 15px;
         }
         h2 {
             float:right;
-            font-size: 18px;
-            padding-right: 10px;
-            max-width: 80%; 
         }
         p{
-            float: right;
-            margin-bottom:0px;
+            float: left;
         }
     }
 }
 
 .next-post > div.well
 {
-    display: inline-block;
-    width: 100%;
-    position: relative;
-    
     > div {
             > span {
-                position: absolute;
                 right: 0px;
                 padding-right: 15px;
             }
             h2 {
                 float:left;
-                font-size: 18px;
-                padding-left: 10px;
-                max-width: 80%; 
             }
             p{
                 float: left;
-                margin-bottom:0px;
+            }
+            > div {
+                left: 15px;
+                right: 0px;
+                text-align: left;
             }
         }
     
     @media screen and (min-width:767px){
         > div {
             > span {
-                position: absolute;
                 left: 0px;
                 padding-left: 15px;
+                padding-right: 0px;
             }
             h2 {
-                float:right;
-                font-size: 18px;
-                padding-right: 10px;
-                max-width: 80%; 
+                float:right; 
             }
-            p{
-                float: right;
-                margin-bottom:0px;
+             > div {
+                left: 0px;
+                right: 15px;
+                text-align: right;
             }
         }
     }
@@ -725,7 +758,7 @@ section.author .well > div {
 	}
 	
 	section.author .well, section.share .well {
-		min-height: 125px;
+		min-height: 140px;
 	}
 }
 
