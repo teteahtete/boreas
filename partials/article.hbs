@@ -18,12 +18,49 @@
 	
 	<div class="col-xs-12">
 		<section class="post-content">
-		{{content}}
+			{{content}}
 		</section>
 	</div>
-		
+	
+	<aside class="previous-next-links">
+		<div class="col-xs-12">
+			<div class="row">
+				<div class="col-xs-12 col-sm-6">
+				{{#prev_post}}
+					<a href="{{url}}">
+						<section class="prev-post">
+							<div class="well">
+								<div>
+									<span><span class="fa fa-long-arrow-left"></span> prev</span>
+									<h2>{{title}}</h2>
+									<p class="text-muted" >{{excerpt words="60"}}</p>
+								</div>
+							</div>
+						</section>
+					</a>
+				{{/prev_post}}
+				</div>
+				
+				<div class="col-xs-12 col-sm-6">
+				{{#next_post}}
+					<a href="{{url}}">
+						<section class="next-post">
+							<div class="well">
+								<div>
+									<span><span class="fa fa-long-arrow-right"></span> next</span>
+									<h2>{{title}}</h2>
+									<p class="text-muted" >{{excerpt words="60"}}</p>
+								</div>
+							</div>
+						</section>
+					</a>
+				{{/next_post}}
+				</div>
+			</div>
+		</div>
+	</aside>
+	
 	<footer class="post-footer">
-		{{! Everything inside the #author tags pulls data from the author }}
 		<div class="col-xs-12 col-sm-6">
 			<section class="author">
 			<div class="well">

@@ -112,6 +112,7 @@ hr {
 }
 
 blockquote {
+  -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   margin: 1.75em 0em 0em 0em;
@@ -153,6 +154,7 @@ code, tt {
 }
 
 pre {
+  -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0 0 1.75em 0;
@@ -262,6 +264,13 @@ div.athena-hero > div {
   }
 }
 
+@media screen and (max-width: 767px) {
+  article.post > header > h3 {
+    border-top: 1px dotted #999;
+    padding-top: 3px;
+  }
+}
+
 @media screen and (min-width: 767px) {
   main div.posts {
     border-left: 1px solid #999;
@@ -275,10 +284,41 @@ h1.post-title.page-header {
   border-bottom: 0px;
 }
 
-.post-excerpt p {
-  min-height: 3em;
+.post-excerpt {
+  position: relative;
+  z-index: 1;
+  padding: 1px;
 }
-.post-excerpt p:first-letter {
+@media screen and (min-width: 985px) {
+  .post-excerpt {
+    min-height: 12em;
+  }
+  .post-excerpt p::first-line {
+    color: #428bca;
+    font-weight: bold;
+  }
+}
+@media screen and (min-width: 767px) and (max-width: 984px) {
+  .post-excerpt {
+    min-height: 6em;
+  }
+  .post-excerpt p::first-line {
+    color: #428bca;
+    font-weight: bold;
+  }
+}
+@media screen and (max-width: 767px) {
+  .post-excerpt {
+    min-height: 3em;
+  }
+  .post-excerpt p::first-line {
+    font-weight: normal;
+  }
+}
+.post-excerpt a {
+  color: #333;
+}
+.post-excerpt a p:first-letter {
   float: left;
   color: #d9edf7;
   font-size: 3em;
@@ -286,23 +326,24 @@ h1.post-title.page-header {
   padding-right: 3px;
   font-family: 'Times New Roman', Times, serif;
   text-transform: uppercase;
-  text-shadow: 1px 1px #999;
+  text-shadow: 1px 1px #428bca;
 }
-.post-excerpt p::first-line {
-  color: #428bca;
+.post-excerpt a:hover {
+  text-decoration: none;
+}
+.post-excerpt p:hover {
+  background-color: #d9edf7;
+  color: #31708f;
+  transition: all 0.75s ease-in-out;
+  -webkit-transition: all 0.75s ease-in-out;
+  /** Chrome & Safari **/
+  -moz-transition: all 0.75s ease-in-out;
+  /** Firefox **/
+  -o-transition: all 0.75s ease-in-out;
+  /** Opera **/
 }
 
-@media screen and (max-width: 767px) {
-  article.post > header > h3 {
-    border-top: 1px dotted #999;
-    padding-top: 3px;
-  }
-}
-article.post > section.post-excerpt {
-  position: relative;
-  z-index: 1;
-}
-article.post > section.post-excerpt:before {
+.post-excerpt:before {
   content: "";
   position: absolute;
   top: 0;
@@ -314,12 +355,12 @@ article.post > section.post-excerpt:before {
   background-position: center center;
 }
 @media screen and (min-width: 985px) {
-  article.post > section.post-excerpt:before {
+  .post-excerpt:before {
     min-height: 12em;
   }
 }
 @media screen and (min-width: 767px) and (max-width: 984px) {
-  article.post > section.post-excerpt:before {
+  .post-excerpt:before {
     min-height: 6em;
   }
 }
@@ -430,7 +471,13 @@ article.post > section.post-excerpt:before {
 @media (min-width: 767px) {
   .post-meta a {
     margin: 3px 3px 3px 0px;
-    transition: all .15s ease-in-out;
+    transition: all 0.15s ease-in-out;
+    -webkit-transition: all 0.15s ease-in-out;
+    /** Chrome & Safari **/
+    -moz-transition: all 0.15s ease-in-out;
+    /** Firefox **/
+    -o-transition: all 0.15s ease-in-out;
+    /** Opera **/
   }
   .post-meta > span {
     margin-right: 6px;
@@ -439,6 +486,84 @@ article.post > section.post-excerpt:before {
     z-index: 100;
     transform: scale(1.1, 1.1);
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.15s ease-in-out;
+    -webkit-transition: all 0.15s ease-in-out;
+    /** Chrome & Safari **/
+    -moz-transition: all 0.15s ease-in-out;
+    /** Firefox **/
+    -o-transition: all 0.15s ease-in-out;
+    /** Opera **/
+  }
+}
+
+.prev-post > div.well:hover, .next-post > div.well:hover {
+  background-color: #d9edf7;
+  color: #31708f;
+  transition: all 0.75s ease-in-out;
+  -webkit-transition: all 0.75s ease-in-out;
+  /** Chrome & Safari **/
+  -moz-transition: all 0.75s ease-in-out;
+  /** Firefox **/
+  -o-transition: all 0.75s ease-in-out;
+  /** Opera **/
+}
+
+.prev-post > div.well {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+}
+.prev-post > div.well > div > span {
+  position: absolute;
+  left: 0px;
+  padding-left: 15px;
+}
+.prev-post > div.well > div h2 {
+  float: right;
+  font-size: 18px;
+  padding-right: 10px;
+  max-width: 80%;
+}
+.prev-post > div.well > div p {
+  float: right;
+  margin-bottom: 0px;
+}
+
+.next-post > div.well {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+}
+.next-post > div.well > div > span {
+  position: absolute;
+  right: 0px;
+  padding-right: 15px;
+}
+.next-post > div.well > div h2 {
+  float: left;
+  font-size: 18px;
+  padding-left: 10px;
+  max-width: 80%;
+}
+.next-post > div.well > div p {
+  float: left;
+  margin-bottom: 0px;
+}
+@media screen and (min-width: 767px) {
+  .next-post > div.well > div > span {
+    position: absolute;
+    left: 0px;
+    padding-left: 15px;
+  }
+  .next-post > div.well > div h2 {
+    float: right;
+    font-size: 18px;
+    padding-right: 10px;
+    max-width: 80%;
+  }
+  .next-post > div.well > div p {
+    float: right;
+    margin-bottom: 0px;
   }
 }
 

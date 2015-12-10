@@ -25,9 +25,11 @@
             </span>
           </header>
           <section class="post-excerpt" {{#if image}} data-has-image="true" {{/if}}>
-            <p>
+            <a href="{{url}}"><p>
                {{#if image}}{{excerpt words="20"}}{{else}}{{excerpt words="60"}}{{/if}}
-              &hellip;</p>
+              &hellip;
+              </p>
+             </a>
           </section>
         </article>
       </div>
