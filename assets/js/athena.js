@@ -16,11 +16,12 @@ var Athena;
         Bootstrapper.getNavList = function () {
             return $('#athenaNavBar > ul').get(0);
         };
-        Bootstrapper.prototype.sideBar = function () {
-            $('[data-toggle=offcanvas]').click(function () {
-                $('.row-offcanvas').toggleClass('active');
+        Bootstrapper.getPrevNextSections = function () {
+            var result = new Array();
+            $('section.next-post, section.prev-post').each(function (index, elem) {
+                result.push(elem);
             });
-            return this;
+            return result;
         };
         Bootstrapper.prototype.tags = function () {
             var _this = this;
@@ -33,6 +34,13 @@ var Athena;
                 _this.addTagsToSidebar(items);
                 _this.addTagsToNavbar(items);
             });
+            return this;
+        };
+        Bootstrapper.prototype.fixPostPageLinks = function () {
+            var items = Bootstrapper.getPrevNextSections();
+            if (items.length == 1) {
+                $(items[0]).parent().parent().removeClass('col-sm-6');
+            }
             return this;
         };
         Bootstrapper.prototype.addTagsToNavbar = function (items) {
@@ -103,6 +111,9 @@ var Athena;
     Athena.Bootstrapper = Bootstrapper;
 })(Athena || (Athena = {}));
 $(document).ready(function () {
-    new Athena.Bootstrapper().tooltips().sideBar().tags();
+    new Athena.Bootstrapper()
+        .tooltips()
+        .fixPostPageLinks()
+        .tags();
 });
 //# sourceMappingURL=athena.js.map

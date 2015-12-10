@@ -18,16 +18,19 @@ module Athena{
             return <HTMLUListElement>$('#athenaNavBar > ul').get(0);
         }
         
-        constructor (){
-        }       
-        
-        sideBar() : Bootstrapper {
-            $('[data-toggle=offcanvas]').click(function() {
-                $('.row-offcanvas').toggleClass('active');
+        private static getPrevNextSections() : Array<HTMLElement> {
+            var result:Array<HTMLElement> = new Array<HTMLElement>();
+            
+            $('section.next-post, section.prev-post').each((index: number, elem: Element) => {
+                result.push(<HTMLElement>elem);
             });
-            return this;
+            
+            return result;
         }
         
+        constructor (){
+        }       
+                
         tags(): Bootstrapper{
             var blogUrl:string = Bootstrapper.getBlogUrl();
             
@@ -41,6 +44,14 @@ module Athena{
                  this.addTagsToNavbar(items);
             }); 
                
+            return this;
+        }
+        
+        fixPostPageLinks(): Bootstrapper {
+            var items = Bootstrapper.getPrevNextSections();
+            if(items.length == 1){
+                $(items[0]).parent().parent().removeClass('col-sm-6');
+            }
             return this;
         }
         
@@ -117,6 +128,9 @@ module Athena{
 }
 
 $(document).ready(function(){
-    new Athena.Bootstrapper().tooltips().sideBar().tags();
+    new Athena.Bootstrapper()
+        .tooltips()
+        .fixPostPageLinks()
+        .tags();
 });
 
