@@ -1,10 +1,10 @@
 {
-  "name": "Athena",
+  "name": "Boreas",
   "version": "1.0.0",
   "author": "Tete Ah Tete",
-  "description": "A starter Ghost theme with Twitter Bootstrap support, and Kendo core ui",
+  "description": "A personal Ghost Theme used for my personal blog. Based on Athena theme.",
   "repository": {
-    "url": "https://github.com/teteahtete/athena",
+    "url": "https://github.com/teteahtete/boreas",
     "type": "git"
   },
   "keywords": [
