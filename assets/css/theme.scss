@@ -67,7 +67,7 @@ body {
 	font-family: Calibri, Tahoma, sans-serif;
     background-color: $ocean-blue-hex;
     @media screen and (min-width:767px){
-	   background: linear-gradient(to bottom, $ocean-blue-rgba, rgba(255,255,255,0.35), $ocean-blue-rgba, $ocean-blue-rgba);
+       background:linear-gradient(to bottom, $sky-blue, $ocean-blue-hex,$ocean-blue-hex,$sky-blue);
     }
 }
 

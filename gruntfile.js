@@ -37,7 +37,7 @@ grunt.initConfig({
         },
         dist: {
             files: {
-                'assets/css/athena.css': 'assets/css/athena.scss'
+                'assets/css/theme.css': 'assets/css/theme.scss'
             }
         }
     },
@@ -47,7 +47,7 @@ grunt.initConfig({
                 banner: '/* My minified css file */'
             },
             files: {
-                'assets/css/athena.min.css': ['assets/css/athena.css']
+                'assets/css/theme.min.css': ['assets/css/theme.css']
             }
         }
     },
