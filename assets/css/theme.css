@@ -35,7 +35,7 @@ body {
 }
 @media screen and (min-width: 767px) {
   body {
-    background: linear-gradient(to bottom, #2e6da4, rgba(255, 255, 255, 0.35), #2e6da4, #2e6da4);
+    background: linear-gradient(to bottom, #428bca, #2e6da4, #2e6da4, #428bca);
   }
 }
 
@@ -850,4 +850,4 @@ pre[class*=language-] > code[data-language]::before {
   background-color: #31708f;
 }
 
-/*# sourceMappingURL=athena.css.map */
+/*# sourceMappingURL=theme.css.map */
