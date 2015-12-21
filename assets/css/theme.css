@@ -502,18 +502,15 @@ h1.post-title.page-header {
   position: relative;
   text-overflow: clip;
   min-height: 100px;
-  max-height: 100px;
 }
 @media screen and (min-width: 984px) {
   .next-post > div.well, .prev-post > div.well {
-    min-height: 125px;
-    max-height: 125px;
+    min-height: 150px;
   }
 }
 @media screen and (min-width: 767px) and (max-width: 984px) {
   .next-post > div.well, .prev-post > div.well {
-    min-height: 150px;
-    max-height: 150px;
+    /* min-height: 150px; */
   }
 }
 .next-post > div.well > div > span, .prev-post > div.well > div > span {
@@ -560,9 +557,12 @@ h1.post-title.page-header {
 }
 .prev-post > div.well > div h2 {
   float: right;
+  min-width: 25%;
+  text-align: right;
 }
 .prev-post > div.well > div p {
   float: left;
+  margin-bottom: 0.5em;
 }
 
 .next-post > div.well > div > span {
@@ -571,9 +571,12 @@ h1.post-title.page-header {
 }
 .next-post > div.well > div h2 {
   float: left;
+  min-width: 25%;
+  text-align: left;
 }
 .next-post > div.well > div p {
   float: left;
+  margin-bottom: 0.5em;
 }
 .next-post > div.well > div > div {
   left: 15px;
@@ -588,6 +591,7 @@ h1.post-title.page-header {
   }
   .next-post > div.well > div h2 {
     float: right;
+    text-align: right;
   }
   .next-post > div.well > div > div {
     left: 0px;
