@@ -528,18 +528,14 @@ h1.post-title.page-header{
     width: 100%;
     position: relative;
     text-overflow: clip;
-    
     min-height: 100px;
-    max-height: 100px;
     
     @media screen and (min-width:984px){
-        min-height: 125px;
-        max-height: 125px;
+        min-height: 150px;
     }
     
     @media screen and (min-width:767px) and (max-width:984px){
-        min-height: 150px;
-        max-height: 150px;
+        /* min-height: 150px; */
     }
     
     > div {
@@ -584,9 +580,12 @@ h1.post-title.page-header{
         }
         h2 {
             float:right;
+            min-width: 25%;
+            text-align: right;
         }
         p{
             float: left;
+            margin-bottom: 0.5em;
         }
     }
 }
@@ -600,9 +599,12 @@ h1.post-title.page-header{
             }
             h2 {
                 float:left;
+                min-width: 25%;
+                text-align: left;
             }
             p{
                 float: left;
+                margin-bottom: 0.5em;
             }
             > div {
                 left: 15px;
@@ -619,7 +621,8 @@ h1.post-title.page-header{
                 padding-right: 0px;
             }
             h2 {
-                float:right; 
+                float:right;
+                text-align: right;
             }
              > div {
                 left: 0px;
