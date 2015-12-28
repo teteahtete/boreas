@@ -272,13 +272,16 @@ div.athena-hero
     > div {
         position: absolute;
         color: #fff;
-        top: 0px;
-        width: 100%;
-        text-align: right;
+        top: 20px;
+        right: 0;
+        width: 50%;
+        text-align: left;
         padding-right: 1em;
         font-style: italic;
-        opacity: 0.75;
-        @include hidden();
+        opacity: .8;
+        @media screen and (max-width: 767px) and (orientation:portrait){
+            @include hidden();
+        }
         @media screen and (min-width: 767px){
             font-size: 1.3em;
             display: block;
