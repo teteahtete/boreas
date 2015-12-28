@@ -442,7 +442,7 @@ h1.post-title.page-header{
 }
 
 .blog-tags-wrapper{
-    @media screen and (max-width:767px){
+    @media screen and (max-width:979px){
         @include hidden();
     }
 }
