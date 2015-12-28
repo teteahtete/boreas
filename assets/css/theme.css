@@ -236,14 +236,19 @@ div.athena-hero h2 {
 div.athena-hero > div {
   position: absolute;
   color: #fff;
-  top: 0px;
-  width: 100%;
-  text-align: right;
+  top: 20px;
+  right: 0;
+  width: 50%;
+  text-align: left;
   padding-right: 1em;
   font-style: italic;
-  opacity: 0.75;
-  display: none;
-  visibility: hidden;
+  opacity: .8;
+}
+@media screen and (max-width: 767px) and (orientation: portrait) {
+  div.athena-hero > div {
+    display: none;
+    visibility: hidden;
+  }
 }
 @media screen and (min-width: 767px) {
   div.athena-hero > div {
@@ -406,7 +411,7 @@ h1.post-title.page-header {
   border-bottom: 0px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 979px) {
   .blog-tags-wrapper {
     display: none;
     visibility: hidden;
@@ -754,9 +759,8 @@ button.navbar-toggle span.fa.fa-home:hover {
   border: 0px;
   background: transparent;
 }
-.navbar-athena .fa-caret-down:before {
-  content: "\f0d7";
-  margin-left: 6px;
+.navbar-athena span.fa {
+  margin-left: 0.2em;
 }
 .navbar-athena .navbar-text {
   color: #fff;
@@ -801,6 +805,9 @@ button.navbar-toggle span.fa.fa-home:hover {
 .navbar-athena .dropdown-menu {
   background-color: #2e6da4;
   font-size: 12px;
+}
+.navbar-athena .dropdown-menu > li a:hover, .navbar-athena .dropdown-menu > li a:focus {
+  transition: width .15s,height .15s,background-color .15s,transform .15s;
 }
 @media screen and (min-width: 767px) {
   .navbar-athena .navbar-collapse.collapse {

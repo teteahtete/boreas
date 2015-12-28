@@ -45,7 +45,7 @@ var Athena;
         };
         Bootstrapper.prototype.addTagsToNavbar = function (items) {
             var target = Bootstrapper.getNavList();
-            var template = kendo.template('<a class="dropdown-toggle" data-toggle="dropdown" href="##">Tags<span class="fa fa-caret-down"></span></a>' +
+            var template = kendo.template('<a class="dropdown-toggle" data-toggle="dropdown" href="##">Categories <span class="fa fa-tag"></span></a>' +
                 '<ul class="dropdown-menu">' +
                 '# for (var i = 0; i < data.length; i++) { #' +
                 '<li><a href="#:data[i].url#">#:data[i].category# [#:data[i].articleCount#]</a></li>' +

@@ -795,11 +795,11 @@ button.navbar-toggle span.fa.fa-home:hover{
     margin-bottom: 0px;
     border: 0px;
     background: transparent;
-    
-    .fa-caret-down:before {
-        content: "\f0d7";
-        margin-left: 6px;
-    }
+
+    span.fa{
+        margin-left: 0.2em;
+    }    
+
     .navbar-text {
         color: #fff;
     }
@@ -840,9 +840,12 @@ button.navbar-toggle span.fa.fa-home:hover{
         color:$washed-blue-text;
     }
     
-    .dropdown-menu{
+    .dropdown-menu {
         background-color: $ocean-blue-hex;
         font-size: 12px;
+        > li a:hover, > li a:focus{
+            transition: width .15s,height .15s,background-color .15s,transform .15s;
+        } 
     }
     
     @media screen and (min-width: 767px) {
